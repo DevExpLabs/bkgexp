@@ -1,0 +1,6 @@
+# Ignore artifacts:
+/build
+/public
+/dist
+/.cache
+/src-tauri

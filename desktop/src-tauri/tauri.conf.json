@@ -1,0 +1,56 @@
+{
+  "package": {
+    "productName": "bkg-rm",
+    "version": "1.0.1"
+  },
+  "build": {
+    "distDir": "../dist",
+    "devPath": "http://localhost:5173/",
+    "beforeDevCommand": "yarn start",
+    "beforeBuildCommand": "yarn build",
+    "withGlobalTauri": true
+  },
+  "tauri": {
+    "bundle": {
+      "active": true,
+      "identifier": "com.tauri.react.example.dev",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ]
+    },
+    "allowlist": {
+      "clipboard": {
+        "all": true
+      },
+      "http": {
+        "scope": ["http://localhost:8000/*", "https://bkg-rm-api-production.up.railway.app/*"]
+      },
+      "all": true,
+      "fs": {
+        "readFile": true,
+        "writeFile": true,
+        "readDir": true,
+        "exists": true,
+        "scope": ["$HOME/**"]
+      }
+    },
+    "windows": [
+      {
+        "title": "Image Background Removal",
+        "width": 1200,
+        "height": 1000,
+        "resizable": true,
+        "transparent": false,
+        "fullscreen": false,
+        "fileDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": "default-src blob: data: filesystem: ws: wss: http: https: tauri: asset: customprotocol: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
+    }
+  }
+}

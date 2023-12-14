@@ -1,0 +1,45 @@
+{
+  "name": "bkg-rm",
+  "version": "1.0.1",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Karol Sawicki <agentpietrucha@gmail.com>",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "1.5.0",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
+    "react": "18.2.0",
+    "react-beautiful-dnd": "13.1.1",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.17.0",
+    "sort-by": "^1.2.0",
+    "tauri-plugin-fs-watch-api": "https://github.com/tauri-apps/tauri-plugin-fs-watch#v1",
+    "tauri-plugin-store-api": "https://github.com/tauri-apps/tauri-plugin-store#v1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "tailwindcss/typography",
+    "@tauri-apps/cli": "1.5.1",
+    "@types/react": "18.2.25",
+    "@types/react-beautiful-dnd": "13.1.3",
+    "@types/react-dom": "18.2.10",
+    "@vitejs/plugin-react": "4.0.0",
+    "autoprefixer": "^10.4.16",
+    "daisyui": "^3.9.2",
+    "postcss": "^8.4.31",
+    "postcss-cli": "10.1.0",
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "snowpack": "3.8.8",
+    "tailwindcss": "^3.3.3",
+    "typescript": "5.2.2",
+    "vite": "4.2.3"
+  }
+}

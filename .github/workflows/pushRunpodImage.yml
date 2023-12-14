@@ -1,0 +1,31 @@
+name: Push runpod image to docker hub
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ml/**
+
+jobs:
+  docker:
+    runs-on: windows-2022
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: v0.11.0
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./ml/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/runpodmodel:latest

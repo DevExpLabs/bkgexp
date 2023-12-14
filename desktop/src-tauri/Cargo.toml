@@ -1,0 +1,22 @@
+[package]
+name = "bkg-rm"
+version = "1.0.1"
+description = "BKG-RM API App"
+authors = [ "Karol Sawicki" ]
+license = "Apache-2.0 OR MIT"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5.0", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = [ "derive" ] }
+tauri = { version = "1.5.1", features = [ "api-all"] }
+tauri-plugin-fs-watch = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+tauri-plugin-store = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+filetime = "0.2.22"
+
+[features]
+default = [ "custom-protocol" ]
+custom-protocol = [ "tauri/custom-protocol" ]

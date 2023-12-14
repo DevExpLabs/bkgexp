@@ -1,0 +1,35 @@
+name: Build Windows desktop app
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - desktop/**
+
+jobs:
+  windows:
+    permissions:
+      contents: write
+    runs-on: windows-2022
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Get app version
+        uses: nyaa8/package-version@v1
+        with:
+          path: 'desktop/package.json'
+      - name: Install dependencies
+        run: yarn
+      - name: Build app
+        run: yarn tauri:build
+      - name: Create release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: desktop/src-tauri/target/release/bundle/nsis/bkg-rm_${{ env.PACKAGE_VERSION }}_x64-setup.exe
+          tag: ${{ env.PACKAGE_VERSION }}
+          overwrite: true
